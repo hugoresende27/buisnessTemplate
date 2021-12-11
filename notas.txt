@@ -1,2 +1,12 @@
 Username: epiz_30571953
 Password: lm8iFe3vqM
+
+username: admin
+
+Database Host: fdb33.awardspace.net
+Database Port: 3306
+Nome da Base de Dados: 4005732_bustemplate
+Utilizador da Base de Dados: 4005732_bustemplate
+Password: lm8iFe3vqM
+Database Version:
+5.7
