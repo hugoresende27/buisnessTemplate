@@ -31,7 +31,8 @@ if (!isset($_SESSION['user'])){  ?>
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-success ">Login</button>
-            <button  class="btn btn-danger ml-4">Registo</button>
+            <!-- <button  class="btn btn-danger ml-4">Registo</button> -->
+            <!-- <a href='form_novo_user.php' class='btn btn-danger ml-4'>Registo</a> -->
         </div>
         <?php if($erro): ?>
 
@@ -50,9 +51,7 @@ if (!isset($_SESSION['user'])){  ?>
 <?php
 }else{
 
-    echo "BEM VINDO ".$_SESSION['user'];
-
-
+    echo "<h1 style='color:white;' class='text-center'>BEM VINDO ".$_SESSION['user']."</h1>";
         }
         ?>
 

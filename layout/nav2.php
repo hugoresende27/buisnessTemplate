@@ -16,7 +16,7 @@
                 <a href="?p=inicio" class="m-3">INICIO</a>   <!--os 3 links apontam para o ?p=condição, no index.php existe o código de roteamento de navegação 
                 //? no php significa declarar variavel p = inicio
                 //?q= query string -->
-                <a href="?p=empresa" class="m-1" >LISTA</a>
+                <a href="?p=lista" class="m-1" >LISTA</a>
                 <a href="?p=servicos" class="m-1">SERVIÇOS</a>
                 <a href="?p=contatos" class="m-1">CONTATOS</a>
                 <a href="?p=logout" class="m-1">LOGOUT</a>

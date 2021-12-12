@@ -28,7 +28,7 @@ body
     /* height: 100vh; */
     /*overflow: hidden; /*BARRA DE SCROLL DOWN, HIDDEN ESCONDIDA*/
     /* margin: 0; */
-    /*overflow-x: hidden; /*REMOVER BARRA DE SCROLL HORIZONTAL*/
+    overflow-x: hidden; /*REMOVER BARRA DE SCROLL HORIZONTAL*/
 }
 
 /*estilos do footer */

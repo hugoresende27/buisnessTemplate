@@ -35,18 +35,14 @@
         case 'inicio':
             include ('inicio.php');
             break;
-        case 'empresa':
-            include ('empresa.php');
+        case 'lista':
+            include ('lista.php');
             break;
         case 'servicos':
-            include ('servicos.php');
+            //include ('servicos.php');
             break;
         case 'contatos':
-            include ('contatos.php');
-            break;
-        case 'areaReservada':
-         
-            include ('areaReservada.php');
+            //include ('contatos.php');
             break;
         default:
             include ('inicio.php');

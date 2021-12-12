@@ -11,7 +11,11 @@
                 </h1>
             </div>
 
-       
+            <div class="col-6 text-right topo-nav p-3" >
+        
+                <a href='form_novo_user.php' class='btn btn-danger ml-4' style="color:white">Registo</a>  
+        
+            </div>
 
         </div>
     </div>
