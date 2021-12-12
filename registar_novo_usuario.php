@@ -43,6 +43,7 @@
         //APRESENTAR INFORMAÇÃO E LINK PARA VOLTAR AO INDEX.PHP
         echo '<h1 class="text-center" style="margin-top: 200px; color:white">User adicionado com sucesso! </br>';
         echo "<a href='index.php' class='btn btn-danger'>VOLTAR</a>";
+        
     }
 
 

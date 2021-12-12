@@ -4,6 +4,7 @@
     //print_r ($_SESSION['user']);
     include ('layout/header.php');
     if (!isset($_SESSION['user'])){
+        //session_start();
         include ('layout/nav.php');
     }else{
         include ('layout/nav2.php');
@@ -29,7 +30,9 @@
     switch($pag){
         case 'logout':
             session_destroy();
-            Header('Location: index.php');
+            //Header('Location:index.php');
+            $u = 'index.php';
+            redirect($u);
             return;
             break;
         case 'inicio':
@@ -50,10 +53,8 @@
     }
     
   
-
+////////////////////////////////////////////////////////////////////////////////
 function verificarLogin(){
-
-
     $user = trim($_POST['txtUser']);  //trim para remover espaços a mais 
     $pass = trim($_POST['txtPass']);
 
@@ -89,5 +90,23 @@ function verificarLogin(){
 
 }
 
-
+////////////////////////////////////////////////////////////
+function redirect($url)
+{
+    if (!headers_sent())
+    {
+        header('Location: '.$url);
+        exit;
+    }
+    else
+    {
+        echo '<script type="text/javascript">';
+        echo 'window.location.href="'.$url.'";';
+        echo '</script>';
+        echo '<noscript>';
+        echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
+        echo '</noscript>'; 
+        exit;
+    }
+}
 ?>

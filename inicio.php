@@ -1,4 +1,5 @@
 <?php
+include ('layout/header.php');
 $erro = false;
 //VERIFICA SE HOUVE SUBMISSÃO DO FORMULÁRIO
    
@@ -6,8 +7,10 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     //die('formulário submetido!');
     //VOU CRIAR UMA FUNÇÃO PARA USAR PARA VERIFICAR O LOGIN, EM VEZ DE ESCREVER TODO O CÓDIGO AQUI
     if (verificarLogin()){      //função retorna true ou false
-        //include ('lista.php');    //////////////////true -> login válido
-        Header ('location: index.php');
+        //include ('index.php');    //////////////////true -> login válido
+       //Header ('location:index.php');
+       $u = 'index.php';
+       redirect($u);
     } else {
         $erro = true;                   /////////////////false -> login inválido
     }
@@ -53,7 +56,7 @@ if (!isset($_SESSION['user'])){  ?>
 
     echo "<h1 style='color:white;' class='text-center'>BEM VINDO ".$_SESSION['user']."</h1>";
         }
-        ?>
+?>
 
 
 
