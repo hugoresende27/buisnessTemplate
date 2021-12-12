@@ -1,27 +1,97 @@
 <?php
-    include "./layout/header.php";
-    include "./layout/footer.php";
-    include "./layout/nav.php";
-?>
 
-<body>
-   
-    <div class="d-flex justify-content-center" style="margin-top: 100px;"> 
-        
-        <form>
-            <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        
-    </div>
+    session_start();
+    //print_r ($_SESSION['user']);
+    include ('layout/header.php');
+    if (!isset($_SESSION['user'])){
+        include ('layout/nav.php');
+    }else{
+        include ('layout/nav2.php');
+    }
+    
+    include ('layout/footer.php');
+
+    $pag = "inicio";
     
 
-</body>
+
+    if (isset($_GET['p'])){/*Se existe a variavel p?, se está definida, isset ($_GET['p']*/
+        $pag = $_GET['p']; //superglobal GET, vai buscar todas as var na query string ?p=
+    }
+    
+    //include ($pag. '.php');     //concatenar todas as $pag a .php
+
+// SISTEMA DE ROTEAMENTO /////////////////////////////////////////////////
+
+
+//COM ESTRUTURA SWITCH CASE
+
+    switch($pag){
+        case 'logout':
+            session_destroy();
+            Header('Location: index.php');
+            return;
+            break;
+        case 'inicio':
+            include ('inicio.php');
+            break;
+        case 'empresa':
+            include ('empresa.php');
+            break;
+        case 'servicos':
+            include ('servicos.php');
+            break;
+        case 'contatos':
+            include ('contatos.php');
+            break;
+        case 'areaReservada':
+         
+            include ('areaReservada.php');
+            break;
+        default:
+            include ('inicio.php');
+            break;
+    }
+    
+  
+
+function verificarLogin(){
+
+
+    $user = trim($_POST['txtUser']);  //trim para remover espaços a mais 
+    $pass = trim($_POST['txtPass']);
+
+    include 'gestor.php';
+    $gestor = new Gestor();
+    $params = array (
+        ':user' => $user
+    );
+    $resultado = $gestor->EXE_QUERY("
+        SELECT * FROM users  
+        WHERE user = :user 
+    ",$params);
+
+    if (count($resultado) == 0){//user não existe na BD
+        //die("login inválido!"); 
+        return false;
+    } else {                    //user existe pelo menos 1 vez na BD
+        $senha_BD = $resultado[0]['senha'];
+     
+  
+        /////////////////////VERIFICAÇÃO DA SENHA////////////////////////////////
+        if (password_verify($pass,$senha_BD)){//encripta $pass com HASH e $senha_BD e compara, return de true ou false
+            
+            $_SESSION['user']=$resultado[0]['user'];
+            return true;//SENHA VÁLIDA
+        } else {
+            
+            
+            return false;//SENHA INVÁLIDA
+        }    
+
+    }
+
+}
+
+
+?>
